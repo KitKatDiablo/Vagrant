@@ -1,7 +1,7 @@
 # Vagrant
 Vagrant Modul300
 
-***Vm Konfiguration
+***Vm Konfiguration***
 Zu Beginn habe ich die Multi VM Umgebung aufgebaut und habe mit verschiedenen Vagrantfiles Server aufgesetzt.
 
 Für die VM auf der wir den DHCP Server installieren wollen, habe ich mich für Ubuntu entschieden.
