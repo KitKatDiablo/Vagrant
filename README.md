@@ -29,3 +29,26 @@ Bei Vagrant kann auch ausgewählt werden, mit welchem Tool man die VM aufsetzten
 	dhcp.vm.provider "virtualbox" do |vb|	
 	
 	vb.memory = "1024"	
+
+Um den DHCP Server zu installieren muss man zuerst das Paketverzeichnis aktualisieren. Im nächsten Schritt wird dann der DHCP Server installiert.
+
+	sudo apt-get update
+	sudo apt-get -y install isc-dhcp-server
+
+***DHCP Konfiguration***
+
+Das Vagrantfile im welchen sich die Konfigurationen des DHCP Servers befinden ist im Pfad /etc/dhcp/dhcpd.conf gespeichert. Im Konfigurationfile wird folgendes geändert:
+
+- Domainname
+- DNS
+- DHCP Scope
+
+
+
+
+
+
+
+
+
+
