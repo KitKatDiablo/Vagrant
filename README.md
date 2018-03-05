@@ -43,7 +43,13 @@ Das Vagrantfile im welchen sich die Konfigurationen des DHCP Servers befinden is
 - DNS
 - DHCP Scope
 
+Der Domainname lautet labor.local
 
+	sudo sed -i 's/example.org/labor.local/g' /etc/dhcp/dhcpd.conf
+
+Der DNS wurde auf 8.8.8.8 (Google DNS) konfiguriert.
+
+	sudo sed -i 's/ns2.labor.local/8.8.8.8/g' /etc/dhcp/dhcpd.conf
 
 
 
