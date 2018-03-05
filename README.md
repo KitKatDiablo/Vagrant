@@ -53,9 +53,6 @@ Der DNS wurde auf 8.8.8.8 (Google DNS) konfiguriert.
 
 Der Scope Bereich hat folgende Parameter:
 
-- Subnet --> 192.168.50.0/24
-- Range --> 192.168.50.50 - 80
-- Gateway --> 192.168.50.1
 
 		sudo sed -i 's/example.org/labor.local/g' /etc/dhcp/dhcpd.conf
 		sudo sed -i 's/ns2.labor.local/8.8.8.8/g' /etc/dhcp/dhcpd.conf
