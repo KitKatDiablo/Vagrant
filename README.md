@@ -65,7 +65,6 @@ Der Scope Bereich hat folgende Parameter:
 	sudo sed -i '$aoption routers 192.168.50.1;' /etc/dhcp/dhcpd.conf
 	sudo sed -i '$a}' /etc/dhcp/dhcpd.conf
 
-
 Nach der Konfiguration wird der DHCP Service neu gestartet.
 
 	sudo service isc-dhcp-server restart
