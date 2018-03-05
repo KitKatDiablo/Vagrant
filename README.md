@@ -11,5 +11,5 @@ Hier die ersten Zeilen des Vagrantfiles in dem die Grundeinstellung der VM defin
 
 * IP: 192.168.10.5
 - Hostname: dhcp
--RAM: 2024 MB-
-*VM Box: Ubuntu Vagrant Box*
+- RAM: 2024 MB
+* VM Box: Ubuntu Vagrant Box
