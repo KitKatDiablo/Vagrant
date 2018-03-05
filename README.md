@@ -9,7 +9,7 @@ Für die VM auf der wir den DHCP Server installieren wollen, habe ich mich für 
 
 Hier die ersten Zeilen des Vagrantfiles in dem die Grundeinstellung der VM definiert werden können.
 
-* IP: 192.168.10.5
+- IP: 192.168.10.5
 - Hostname: dhcp
 - RAM: 2024 MB
-* VM Box: Ubuntu Vagrant Box
+- VM Box: Ubuntu Vagrant Box
