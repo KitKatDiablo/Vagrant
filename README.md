@@ -8,7 +8,7 @@ Zu Beginn habe ich die Multi VM Umgebung aufgebaut und habe mit verschiedenen Va
 Für die VM auf der wir den DHCP Server installieren wollen, habe ich mich für Debian entschieden.
 Dieser wurde folgendermassen konfiguriert
 
-- IP: 192.168.10.5
+- IP: 192.168.50.4
 - Hostname: dhcp
 - RAM: 2024 MB
 - VM Box: Debian Vagrant Box
