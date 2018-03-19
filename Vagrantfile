@@ -1,14 +1,40 @@
-Vagrant.configure(2) do |config|
-  config.vm.box = "ubuntu/trusty64"
-  config.vm.network "forwarded_port", guest:80, host:8080, auto_correct: true
-  config.vm.synced_folder ".", "/var/www/html"  
- config.vm.provider "virtualbox" do |vb|
-  vb.memory = "2024"  
- end
-  config.vm.provision "shell", inline: <<-SHELL 
-    sudo apt-get update
-    sudo apt-get -y install apache2
-    sudo apt-get install mysql-server mysql-client
+Vagrant.configure(2) do |config|  
+  config.vm.define "dhcp" do |dhcp|	
+    dhcp.vm.box = "debian/jessie64" 	
+    dhcp.vm.hostname = "dhcp"		
+    dhcp.vm.network "private_network", ip:"192.168.50.4" 	
+	dhcp.vm.provider "virtualbox" do |vb|			
+vb.memory = "2048"
 
-  SHELL
-end
+
+#Update
+sudo apt-get update
+
+#Webserver installieren
+sudo apt-get -y install isc-dhcp-server
+
+#DNS Konfigurieren
+sudo sed -i 's/example.org/labor.local/g' /etc/dhcp/dhcpd.conf
+
+#Domainnamen setzen
+sudo sed -i 's/ns2.labor.local/8.8.8.8/g' /etc/dhcp/dhcpd.conf
+
+#DHCP Bereich setzen
+sudo sed -i 's/example.org/labor.local/g' /etc/dhcp/dhcpd.conf
+sudo sed -i 's/ns2.labor.local/8.8.8.8/g' /etc/dhcp/dhcpd.conf
+sudo sed -i 's/#authoritative/authoritative/g' /etc/dhcp/dhcpd.conf
+sudo sed -i '$asubnet 192.168.50.0 netmask 255.255.255.0 {' /etc/dhcp/dhcpd.conf
+sudo sed -i '$arange 192.168.50.50 192.168.50.80;' /etc/dhcp/dhcpd.conf
+sudo sed -i '$aoption routers 192.168.50.1;' /etc/dhcp/dhcpd.conf
+sudo sed -i '$a}' /etc/dhcp/dhcpd.conf
+
+#Neustarten des DHCP Services nach der Konfiguration
+sudo service isc-dhcp-server restart
+
+#Tastaturlayout auf Deutsch setzen
+sudo sed -i 's/XKBLAYOUT="us"/XKBLAYOUT="ch"/g' /etc/default/locale
+
+#Firewall Konfiguration
+sudo apt-get install ufw -y
+sudo ufw allow from 10.0.2.2 to any port 22
+sudo ufw --force enable
