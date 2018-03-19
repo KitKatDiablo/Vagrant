@@ -62,7 +62,7 @@ Am ende wird noch das Tastaturlayout auf Deutsch Schweiz gestellt.
 
 	sudo sed -i 's/XKBLAYOUT="us"/XKBLAYOUT="ch"/g' /etc/default/locale
 
-Danach wird die Firewall installiert und konfiguriert:
+Danach wird die Firewall installiert und konfiguriert, damit nur bestimmte IP-Adressen zugreifen können:
 			
 	sudo apt-get install ufw -y
 	sudo ufw allow from 10.0.2.2 to any port 22
