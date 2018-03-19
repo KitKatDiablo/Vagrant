@@ -5,7 +5,9 @@ Vagrant.configure(2) do |config|
     dhcp.vm.network "private_network", ip:"192.168.50.4" 	
 	dhcp.vm.provider "virtualbox" do |vb|			
 vb.memory = "2048"
+end
 
+dhcp.vm.provision "shell", inline: <<-SHELL
 
 #Update
 sudo apt-get update
@@ -13,10 +15,11 @@ sudo apt-get update
 #Webserver installieren
 sudo apt-get -y install isc-dhcp-server
 
-#DNS Konfigurieren
-sudo sed -i 's/example.org/labor.local/g' /etc/dhcp/dhcpd.conf
 
 #Domainnamen setzen
+sudo sed -i 's/example.org/labor.local/g' /etc/dhcp/dhcpd.conf
+
+#DNS Konfigurieren
 sudo sed -i 's/ns2.labor.local/8.8.8.8/g' /etc/dhcp/dhcpd.conf
 
 #DHCP Bereich setzen
@@ -38,3 +41,7 @@ sudo sed -i 's/XKBLAYOUT="us"/XKBLAYOUT="ch"/g' /etc/default/locale
 sudo apt-get install ufw -y
 sudo ufw allow from 10.0.2.2 to any port 22
 sudo ufw --force enable
+
+SHELL
+	end
+end
