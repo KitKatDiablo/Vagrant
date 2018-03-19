@@ -1,4 +1,4 @@
-# Vagrant
+# M300_LB1 - DHCP Server
 Vagrant Modul300
 
 ***Vm Konfiguration***
